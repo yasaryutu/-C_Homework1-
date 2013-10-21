@@ -1,0 +1,142 @@
+#include<stdio.h>
+#include<math.h>
+#include<Windows.h>
+void main()
+{
+	int sifre=125521,hesap_numarasi=1453,diger_hesap_numarasi;
+	int para_miktari=500,cekilen_miktar,eklenen_miktar,yatirma_miktari;
+	int kalan_miktar;
+	int secim;  // aralardaki kontrol yapıları için 
+    int tercih; // menüde yapılan tercih için
+	
+
+ana_ekran:
+
+	printf("\t\t\t HOS GELDINIZ   \n\n");
+
+
+    printf("hesap numarasini giriniz\t\n");
+	scanf("%d",&hesap_numarasi);
+
+	while(hesap_numarasi!=1453)
+	{
+		printf("girdiginiz hesap numarasi yanlis lutfen tekrar giriniz\t\n");
+		scanf("%d",&hesap_numarasi);
+	}
+
+	printf("sifrenizi giriniz\t\t\n");
+	scanf("%d",&sifre);
+
+	while(sifre!=125521)
+	{
+		printf("girdiginiz sifre yanlis tekrar giriniz\t\t\n");
+		scanf("%d",&sifre);
+	
+	}
+		
+menu:  
+
+	system("CLS");
+	printf("\nsayin Yasar KOC hesabinizda %d liraniz var\t\n\n",para_miktari);
+	printf("\t\t\t  MENU   \n\n");
+	printf("para cekmek icin bir(1)\n");
+	printf("para yatirmak icin iki(2)\n");
+	printf("baska bir hesaba para yatirmak icin uc(3)\n");
+	printf("cikis yapmak icin dort(4) tuslayin\n");
+	scanf("%d",&tercih);
+
+	if (tercih==1)
+	{
+para_cekme_unitesi: 
+		system("CLS");
+
+		printf("cekmek istediginiz miktari giriniz\n");
+		scanf("%d",&cekilen_miktar);                                
+		if( cekilen_miktar<=para_miktari)
+		{
+			kalan_miktar=para_miktari-cekilen_miktar;
+		printf("hesabinizda %d liraniz kalmistir\n",kalan_miktar);
+		menu_istegi:
+		printf("\n menuye donmek isterseniz 1 tuslayiniz\n\t\t");
+		scanf("%d",&secim);
+		if(secim==1)
+		goto menu;
+		else
+			 goto cikis; 
+		
+		}
+		else if (cekilen_miktar>para_miktari)
+		{
+			printf("\nhesabinizda yeterli miktar bulunmamaktadir\n");
+		    printf("\ntekrar denemek isterseniz 1 , menuye donmek isterseniz 0 tuslayiniz\t\t\n");
+			scanf("%d",&secim);
+		}
+			if (secim==1)
+			{
+				goto para_cekme_unitesi;
+			
+			}
+			else if (secim==0)
+				goto menu;
+	}
+	
+
+			if(tercih==2)
+			{
+para_yatirma_unitesi:
+				system("CLS");
+
+				printf("\nyatirmak istediğiniz miktari giriniz\t\t");
+				scanf("%d",&eklenen_miktar);
+				para_miktari=para_miktari+eklenen_miktar; // eklenen parayla birlikte toplam parayı bulmak için
+				printf("hesabinizda %d liraniz bulunmaktadir\n\n",para_miktari);
+				printf("menuye donmek icin 1, hesaptan cikmak icin 2 tuslayin\n");
+				scanf("%d",&secim);
+				if (secim==1)
+					goto menu;
+				
+					
+			}
+			if(tercih==3)
+			{
+baska_hesaba_para_yatirma:
+				system("CLS");
+
+				printf("\npara yatirmak istediginiz hesap numarasini giriniz\t\t\n\n");
+				scanf("%d",&diger_hesap_numarasi);
+				printf("yatirmak istediginiz miktari giriniz\t\t\t\t\n\n");
+				scanf("%d",&yatirma_miktari);
+				if(yatirma_miktari<=para_miktari)
+				{
+					printf("hesabinizdan %d numarali hesaba %d lira aktarilmistir\n\n",diger_hesap_numarasi,yatirma_miktari);
+					printf("hesabinizda %d liraniz kalmistir\n\n",para_miktari-yatirma_miktari);
+				    printf("baska bir islem yapmak icin bir(1)'e , cikis yapmak icin iki(2)'ye basiniz\n\n ");
+					scanf("%d",&secim);
+					if(secim==1)
+						goto menu;
+					else
+						goto cikis;
+					
+				}
+				else
+				{
+				printf("hesabinizda yeterli miktar bulunmamaktadir!!\n\n");
+				printf("tekrar denemek icin bir(1), menuye donmek icin iki(2) tuslayin\n\n");
+				scanf("%d",&secim);
+				}
+
+				if (secim==1)
+				    goto baska_hesaba_para_yatirma;
+                else
+					goto menu;
+			}
+			if(tercih==4)
+			{
+cikis:
+				system("CLS");
+				printf("tesekkur ederiz\n");
+				system("PAUSE");	
+			}
+			
+
+ }
