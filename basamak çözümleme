@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void main()
+{
+	int sayi;
+	int binlik,yüzlük,onluk,birlik;
+sayi_gir: // 4 haneli sayı girilmezse buraya dönmek için
+	printf("lutfen 4 haneli bir sayi giriniz\n");
+	scanf("%d",&sayi);
+	if (sayi<9999 && sayi>999)
+	{       
+            system("cls"); // ekranın temin olması için
+      		binlik=sayi/1000; //binler basamagını bulmak için
+			yüzlük=(sayi-binlik*1000)/100; // yüzler basamagını bulmak için
+			onluk=(sayi-binlik*1000-yüzlük*100)/10; // onlar basamagını bulmak için
+			birlik=(sayi-binlik*1000-yüzlük*100-onluk*10)/1; // birler basamagını bulmak için
+			printf("cozumlenecek sayi= %d\n\n",sayi);
+			printf("girilen sayi= %d\n\n",sayi);
+			printf("%d tane binlik\n\n",binlik);
+            printf("%d tane yuzluk\n\n",yüzlük);
+            printf("%d tane onluk\n\n",onluk);
+			printf("%d tane birlik var\n\n",birlik);
+	}
+	else 
+	{
+		printf("hatali bir sayi girdiniz\n\n");
+		goto sayi_gir;
+	}
+
+	system("pause");
+	
+}
